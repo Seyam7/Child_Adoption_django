@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+
+{% block title %}
+  Agencies
+{% endblock %}
+
+{% block content %}
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#/ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Division</th>
+      <th scope="col">District</th>
+      <th scope="col">Contact</th>
+      <th scope="col">Address</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for agency in data %}
+    <tr>
+      <td>{{ agency.id }}</td>
+      <td>{{ agency.name }}</td>
+      <td>{{ agency.division }}</td>
+      <td>{{ agency.district }}</td>
+      <td>{{ agency.contact }}</td>
+      <td>{{ agency.address }}</td>
+      <td><a href="{% url 'updateagency' agency.id %}" class="btn btn-warning btn-sm">Edit</a>
+        <a href="{% url 'removeagency' agency.id %}" class="btn btn-danger btn-sm">Remove</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
